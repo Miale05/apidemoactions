@@ -15,6 +15,19 @@ Feature: Get Lista Clientes Request
         When method GET
         Then status 500
 
+    Scenario: Validar que se obtenga un cliente por index exitosamente
+        * path '0'
+        When method GET
+        Then status 200
+        And match response == 
+        """
+        {
+            nombre: "Miguel Duenas",
+            correoElectronico: "miguel@mail.com",
+            telefono: 987654321
+        }
+        """
+
     Scenario: Validar que la lista de clientes no este vacia
         When method GET
         Then match response != null
