@@ -60,7 +60,10 @@ jobs:
       - name: Run Application
         run: |
           java -jar target/*.jar &
-          sleep 30
+          until curl --silent --fail http://localhost:8080/api/health; do
+            echo "Waiting for application to be healthy..."
+            sleep 5
+          done
 
       - name: Run Unit Tests
         run: mvn clean test
@@ -90,7 +93,10 @@ jobs:
       - name: Run Application
         run: |
           java -jar target/*.jar &
-          sleep 30
+          until curl --silent --fail http://localhost:8080/api/health; do
+            echo "Waiting for application to be healthy..."
+            sleep 5
+          done
 
       - name: Run Karate DSL Tests
         run: mvn clean test -Dtest=ApiTest

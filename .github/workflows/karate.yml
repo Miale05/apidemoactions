@@ -1,6 +1,11 @@
 name: Karate DSL Tests
 on:
   workflow_dispatch:
+    inputs:
+      tags:
+        description: 'Tags to filter Karate tests (ejmp: @health,@test-cliente)'
+        required: true
+        default: '@health'
 
 jobs:
   build:
@@ -59,7 +64,7 @@ jobs:
           done
 
       - name: Run Karate DSL Tests
-        run: mvn clean test -Dtest=ApiTest
+        run: mvn clean test -Dtest=ApiTest -Dkarate.options="--tags ${{ github.event.inputs.tags }}"
 
       - name: Upload Cucumber HTML Report
         uses: actions/upload-artifact@v4
