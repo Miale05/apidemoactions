@@ -5,6 +5,10 @@ public class Cliente {
     private String correoElectronico;
     private int telefono;
 
+    public Cliente() {
+        // Constructor vacío
+    }
+
     public Cliente(String nombre, String correoElectronico, int telefono) {
         this.nombre = nombre;
         this.correoElectronico = correoElectronico;
