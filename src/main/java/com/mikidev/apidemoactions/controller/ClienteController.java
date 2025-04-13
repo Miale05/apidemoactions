@@ -15,6 +15,11 @@ import com.mikidev.apidemoactions.model.Cliente;
 @RequestMapping("/api")
 @CrossOrigin(origins = {"*"})
 public class ClienteController {
+
+    @GetMapping("/health")
+    public String getHealth() {
+        return "OK";
+    }
     
     @GetMapping("/cliente")
     public Cliente getCliente() {
