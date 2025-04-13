@@ -93,6 +93,22 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+            	<groupId>org.apache.maven.plugins</groupId>
+            	<artifactId>maven-surefire-plugin</artifactId>
+            	<version>3.0.0-M7</version>
+            	<configuration>
+                	<!-- Incluir solo los tests unitarios -->
+                	<includes>
+                    	<include>**/ApidemoactionsApplicationTests.java</include>
+                	</includes>
+                	<!-- Excluir los tests de Karate DSL -->
+                	<excludes>
+                    	<exclude>**/feature/*.feature</exclude>
+                	</excludes>
+            	</configuration>
+        	</plugin>
 		</plugins>
 	</build>
 
