@@ -1,0 +1,25 @@
+name: "Download Artifact"
+description: "Action Reusable para descargar artefactos"
+
+inputs:
+  name:
+    description: 'Nombre del artefacto a descargar'
+    required: true
+  path:
+    description: 'Ruta donde se descargará el artefacto'
+    required: false
+    default: ''
+  if-no-files-found:
+    description: 'Comportamiento cuando no se encuentran archivos (error|warn|ignore)'
+    required: false
+    default: 'warn'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Download Artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ inputs.name }}
+        path: ${{ inputs.path }}
+        if-no-files-found: ${{ inputs.if-no-files-found }}

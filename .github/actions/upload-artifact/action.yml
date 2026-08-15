@@ -1,0 +1,25 @@
+name: "Upload Artifact"
+description: "Action Reusable para subir artefactos"
+
+inputs:
+  name:
+    description: 'Nombre del artefacto a subir'
+    required: true
+  path:
+    description: 'Ruta del artefacto a subir'
+    required: true
+
+  if-no-files-found:
+    description: 'Comportamiento cuando no se encuentran archivos (error|warn|ignore)'
+    required: false
+    default: 'warn'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ inputs.name }}
+        path: ${{ inputs.path }}
+        if-no-files-found: ${{ inputs.if-no-files-found }}

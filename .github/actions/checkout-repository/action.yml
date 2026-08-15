@@ -1,0 +1,10 @@
+name: "Checkout Repository"
+description: "Action Reusable para realizar Checkout del repositorio"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout Repository Code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
